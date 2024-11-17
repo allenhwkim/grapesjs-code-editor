@@ -1,0 +1,16 @@
+{
+  "name": "grapesjs-plugin-table",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite --open",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  },
+  "dependencies": {
+    "grapesjs": "^0.22.3"
+  }
+}
