@@ -56,14 +56,13 @@ export class CodeEditor {
   }
 
   buildSection(type, codeViewer) {
-    const { $, opts } = this;
+    const { $ } = this;
     const section = $('<section></section>');
-    const btnText = type === 'html' ? opts.htmlBtnText : opts.cssBtnText;
     section.append($(`
       <div class="codepanel-separator">
         <div class="codepanel-label">${type}</div>
         <div class="cp-btn-container">
-          <button class="cp-apply-${type} gjs-btn-prim">${btnText}</button>
+          <button class="cp-apply-${type} gjs-btn-prim">Apply</button>
         </div>
       </div>`));
     const codeViewerEl = codeViewer.getElement();

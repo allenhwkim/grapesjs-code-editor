@@ -5,20 +5,8 @@ import './styles.css';
 export default function (editor: Editor, opts = {}) {
   const options = {
     ...{
-      //State when open
-      openState: {
-        cv: '65%',
-        pn: '35%'
-      },
-      //State when closed
-      closedState: {
-        cv: '85%',
-        pn: '15%'
-      },
-      //Save HTML button text
-      htmlBtnText: 'Apply',
-      //Save CSS button text
-      cssBtnText: 'Apply',
+      openState: { cv: '65%', pn: '35%' }, //State when open
+      closedState: { cv: '85%', pn: '15%' }, //State when closed
     },
     ...opts
   };
