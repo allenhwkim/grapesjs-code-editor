@@ -61,8 +61,7 @@ export class CodeEditor {
     section.append($(`
       <div class="codepanel-separator">
         <div class="codepanel-label">${type}</div>
-        <div class="cp-btn-container">
-          <button class="cp-apply-${type} gjs-btn-prim">Apply</button>
+        <button class="cp-apply-${type} gjs-btn-prim">Apply</button>
         </div>
       </div>`));
     const codeViewerEl = codeViewer.getElement();
