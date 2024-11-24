@@ -232,9 +232,6 @@ export class CodeEditor {
     !opts.clearData && componentEl.classList.add(`gjs-selected`);
     result += html;
 
-    const js = opts.editJs ? component.getScriptString() : '';
-    result += js ? `<script>${js}</script>` : '';
-
     return result;
   }
 }

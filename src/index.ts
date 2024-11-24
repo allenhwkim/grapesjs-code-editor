@@ -15,8 +15,6 @@ export default function (editor: Editor, opts = {}) {
         cv: '85%',
         pn: '15%'
       },
-      //Allow editing of javascript, set allowScripts to true for this to work
-      editJs: false,
       //Remove component data eg data-gjs-type="..."
       clearData: false,
       //Used to remove css from the Selector Manager
