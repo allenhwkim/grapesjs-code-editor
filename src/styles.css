@@ -26,15 +26,6 @@
   text-transform: uppercase;
 }
 
-.cp-btn-container {
-  display: flex;
-  justify-content: space-evenly;
-
-  & .gjs-btn-prim {
-    margin: 2.5px;
-  }
-}
-
 .gutter {
   cursor: ns-resize;
   position: relative;
