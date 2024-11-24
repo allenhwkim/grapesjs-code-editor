@@ -41,7 +41,7 @@ export class CodeEditor {
   }
 
   buildCodeEditor(type) {
-    const { editor, opts } = this;
+    const { editor } = this;
 
     return editor.CodeManager.createViewer({
       codeName: type === 'html' ? 'htmlmixed' : 'css',
@@ -51,8 +51,7 @@ export class CodeEditor {
       autoCloseTags: 1,
       autoCloseBrackets: 1,
       styleActiveLine: 1,
-      smartIndent: 1,
-      ...opts.codeViewOptions
+      smartIndent: 1
     });
   }
 
