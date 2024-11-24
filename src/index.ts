@@ -16,7 +16,7 @@ export default function (editor: Editor, opts = {}) {
         pn: '15%'
       },
       //Remove component data eg data-gjs-type="..."
-      clearData: false,
+      clearData: true,
       //Used to remove css from the Selector Manager
       cleanCssBtn: true,
       //Save HTML button text

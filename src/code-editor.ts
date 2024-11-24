@@ -214,24 +214,24 @@ export class CodeEditor {
 
     this.component = this.editor.getSelected();
     if (this.component) {
-      this.htmlCodeEditor.setContent(this.getComponentHtml(this.component));
+      this.htmlCodeEditor.setContent(this.component.toHTML());
       this.cssCodeEditor.setContent(this.editor.CodeManager.getCode(this.component, 'css', {
         cssc: this.editor.Css
       }));
     }
   }
 
-  getComponentHtml(component) {
-    const { opts } = this;
-    let result = '';
-    const componentEl = component.getEl();
+  // getComponentHtml(component) {
+  //   const { opts } = this;
+  //   let result = '';
+  //   const componentEl = component.getEl();
 
-    !opts.clearData && componentEl.classList.remove(`gjs-selected`);
-    const html = opts.clearData ? component.toHTML() :
-      (component.attributes.type === 'wrapper' ? componentEl.innerHTML : componentEl.outerHTML);
-    !opts.clearData && componentEl.classList.add(`gjs-selected`);
-    result += html;
+  //   !opts.clearData && componentEl.classList.remove(`gjs-selected`);
+  //   const html = opts.clearData ? component.toHTML() :
+  //     (component.attributes.type === 'wrapper' ? componentEl.innerHTML : componentEl.outerHTML);
+  //   !opts.clearData && componentEl.classList.add(`gjs-selected`);
+  //   result += html;
 
-    return result;
-  }
+  //   return result;
+  // }
 }
