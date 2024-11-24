@@ -109,7 +109,7 @@ export class CodeEditor {
 
     editor.on('component:update', model => this.updateEditorContents());
     editor.on('stop:preview', () => {
-      if (this.isShowing && !this.opts.preserveWidth) {
+      if (this.isShowing) {
         this.canvas.css('width', this.opts.openState.cv);
       }
     });
@@ -122,8 +122,6 @@ export class CodeEditor {
     // make sure editor is aware of width change after the 300ms effect ends
     setTimeout(this.refreshEditors.bind(this), 320);
 
-    if (this.opts.preserveWidth) return;
-
     this.panelViews.css('width', this.opts.openState.pn);
     this.canvas.css('width', this.opts.openState.cv);
   }
@@ -131,8 +129,6 @@ export class CodeEditor {
   hideCodePanel() {
     if (this.codePanel) this.codePanel.css('display', 'none');
     this.isShowing = false;
-
-    if (this.opts.preserveWidth) return;
 
     this.panelViews.css('width', this.opts.closedState.pn);
     this.canvas.css('width', this.opts.closedState.cv);
