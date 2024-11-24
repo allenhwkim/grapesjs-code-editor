@@ -11,6 +11,8 @@
     "vite": "^5.4.10"
   },
   "dependencies": {
-    "grapesjs": "^0.22.3"
+    "grapesjs": "^0.22.3",
+    "grapesjs-parser-postcss": "^1.0.3",
+    "split.js": "^1.6.5"
   }
 }
