@@ -59,13 +59,10 @@ export class CodeEditor {
     const { $, opts } = this;
     const section = $('<section></section>');
     const btnText = type === 'html' ? opts.htmlBtnText : opts.cssBtnText;
-    const cleanCssBtn = (opts.cleanCssBtn && type === 'css') ?
-      `<button class="cp-delete-${type} gjs-btn-prim">${opts.cleanCssBtnText}</button>` : '';
     section.append($(`
       <div class="codepanel-separator">
         <div class="codepanel-label">${type}</div>
         <div class="cp-btn-container">
-          ${cleanCssBtn}
           <button class="cp-apply-${type} gjs-btn-prim">${btnText}</button>
         </div>
       </div>`));
@@ -95,9 +92,6 @@ export class CodeEditor {
 
     this.codePanel.find('.cp-apply-css')
       .on('click', this.updateCss.bind(this));
-
-    this.opts.cleanCssBtn && this.codePanel.find('.cp-delete-css')
-      .on('click', this.deleteSelectedCss.bind(this));
 
     Split(sections, {
       direction: 'vertical',
@@ -179,17 +173,6 @@ export class CodeEditor {
     this.previousCssCode = cssCode;
     this.editor.Css.addRules(cssCode);
     return cssCode;
-  }
-
-  deleteSelectedCss(e) {
-    e?.preventDefault();
-    const selections = this.cssCodeEditor.editor.getSelections();
-    selections.forEach(selection => this.parseRemove(selection));
-    this.cssCodeEditor.editor.deleteH();
-  }
-
-  parseRemove(removeCss) {
-    return this.editor.Css.remove(this.getRules(this.editor.Parser.parseCss(removeCss)));
   }
 
   getRules(rules, opts: any = {}) {

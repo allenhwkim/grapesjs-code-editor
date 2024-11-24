@@ -23,8 +23,6 @@ export default function (editor: Editor, opts = {}) {
       htmlBtnText: 'Apply',
       //Save CSS button text
       cssBtnText: 'Apply',
-      //Clean CSS button text
-      cleanCssBtnText: 'Delete'
     },
     ...opts
   };
