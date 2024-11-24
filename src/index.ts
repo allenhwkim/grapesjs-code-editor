@@ -1,16 +1,20 @@
 import { Editor } from 'grapesjs';
-import commands from './commands';
+import { CodeEditor } from './code-editor';
 import './styles.css';
 
-export default function (editor: Editor, opts = {}) {
-  const options = {
-    ...{
-      openState: { cv: '65%', pn: '35%' }, //State when open
-      closedState: { cv: '85%', pn: '15%' }, //State when closed
-    },
-    ...opts
-  };
+export default (editor: Editor, options = {}) => {
+  let codeEditor: CodeEditor;
 
-  // Load commands
-  commands(editor, options);
-};
+  editor.Commands.add('open-code', {
+
+    run: function(editor: Editor) {
+      codeEditor = new CodeEditor(editor, options);
+      codeEditor?.buildCodePanel();
+      codeEditor?.showCodePanel();
+    },
+
+    stop: function(_editor: Editor) {
+      codeEditor?.hideCodePanel();
+    },
+  });
+}

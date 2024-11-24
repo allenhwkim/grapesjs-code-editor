@@ -8,7 +8,10 @@ import Split from 'split.js';
 export class CodeEditor {
   editor: Editor;
   $: any;
-  opts: any;
+  opts = {
+    openState: { cv: '65%', pn: '35%' }, //State when open
+    closedState: { cv: '85%', pn: '15%' }, //State when closed
+  };
   canvas: any;
   panelViews: any;
   isShowing: boolean;
@@ -23,7 +26,7 @@ export class CodeEditor {
   constructor(editor: Editor, opts) {
     this.editor = editor;
     this.$ = editor.$;
-    this.opts = opts;
+    this.opts = {...this.opts, ...opts};
     this.canvas = this.findWithinEditor(`.gjs-cv-canvas`);
     console.log('canvas', this.canvas);
     this.panelViews = this.findWithinEditor(`.gjs-pn-views-container`);
