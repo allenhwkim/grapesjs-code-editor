@@ -15,8 +15,6 @@ export default function (editor: Editor, opts = {}) {
         cv: '85%',
         pn: '15%'
       },
-      //Code viewer options
-      codeViewOptions: {},
       //Stop resizing openState and closedState
       preserveWidth: false,
       //Allow editing of javascript, set allowScripts to true for this to work
