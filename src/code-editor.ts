@@ -27,15 +27,14 @@ export class CodeEditor {
     this.canvas = this.findWithinEditor(`.gjs-cv-canvas`);
     console.log('canvas', this.canvas);
     this.panelViews = opts.appendTo ? this.$(opts.appendTo) :
-      this.findWithinEditor(`.gjs-pn-${opts.panelId}`);
+      this.findWithinEditor(`.gjs-pn-views-container`);
     console.log('panelViews', this.panelViews);
     this.isShowing = true;
   }
 
   findPanel() {
     const pn = this.editor.Panels;
-    const id = this.opts.panelId;
-    return pn.getPanel(id) || pn.addPanel({ id });
+    return pn.getPanel('views-container') || pn.addPanel({ id: 'views-container' });
   }
 
   findWithinEditor(selector) {
@@ -81,7 +80,7 @@ export class CodeEditor {
 
   buildCodePanel() {
     const { $, editor } = this;
-    const panel = this.opts.panelId ? this.findPanel() : 0;
+    const panel = this.findPanel();
     this.codePanel = $('<div></div>');
     this.codePanel.addClass('code-panel');
 
