@@ -26,8 +26,7 @@ export class CodeEditor {
     this.opts = opts;
     this.canvas = this.findWithinEditor(`.gjs-cv-canvas`);
     console.log('canvas', this.canvas);
-    this.panelViews = opts.appendTo ? this.$(opts.appendTo) :
-      this.findWithinEditor(`.gjs-pn-views-container`);
+    this.panelViews = this.findWithinEditor(`.gjs-pn-views-container`);
     console.log('panelViews', this.panelViews);
     this.isShowing = true;
   }
@@ -89,9 +88,7 @@ export class CodeEditor {
 
     const sections = [this.buildSection('html', this.htmlCodeEditor), this.buildSection('css', this.cssCodeEditor)];
 
-    panel && !this.opts.appendTo &&
-      panel.set('appendContent', this.codePanel).trigger('change:appendContent');
-    this.opts.appendTo && $(this.opts.appendTo).append(this.codePanel);
+    panel && panel.set('appendContent', this.codePanel).trigger('change:appendContent');
     this.updateEditorContents();
 
     this.codePanel.find('.cp-apply-html')

@@ -5,8 +5,6 @@ import './styles.css';
 export default function (editor: Editor, opts = {}) {
   const options = {
     ...{
-      //Append to element instead of views-container
-      appendTo: '',
       //State when open
       openState: {
         cv: '65%',
