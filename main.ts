@@ -8,17 +8,9 @@ declare var window: any;
 window.editor = grapesjs.init({
   height: '100%',
   container: '#gjs',
-  showOffsets: true,
   fromElement: true,
-  noticeOnUnload: false,
   storageManager: false,
-  selectorManager: {
-    componentFirst: true,
-  },
   plugins: [grapesjsCodeEditor, grapesjsParserPostcss],
-  pluginsOpts: {
-    [grapesjsCodeEditor as any]: {}
-  }
 });
 
 const pn = window.editor.Panels;
