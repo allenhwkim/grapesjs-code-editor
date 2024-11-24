@@ -203,18 +203,4 @@ export class CodeEditor {
       }));
     }
   }
-
-  // getComponentHtml(component) {
-  //   const { opts } = this;
-  //   let result = '';
-  //   const componentEl = component.getEl();
-
-  //   !opts.clearData && componentEl.classList.remove(`gjs-selected`);
-  //   const html = opts.clearData ? component.toHTML() :
-  //     (component.attributes.type === 'wrapper' ? componentEl.innerHTML : componentEl.outerHTML);
-  //   !opts.clearData && componentEl.classList.add(`gjs-selected`);
-  //   result += html;
-
-  //   return result;
-  // }
 }
