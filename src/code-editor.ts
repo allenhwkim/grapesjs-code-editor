@@ -28,19 +28,13 @@ export class CodeEditor {
   buildCodeEditor(type: string) {
     return this.editor.CodeManager.createViewer({
       codeName: type === 'html' ? 'htmlmixed' : 'css',
-      // theme: 'hopscotch',
-      readOnly: 0,
-      // autoBeautify: 1,
-      // autoCloseTags: 1,
-      // autoCloseBrackets: 1,
-      // styleActiveLine: 1,
-      // smartIndent: 1
+      readOnly: 0
     });
   }
 
   // add html/css code editor views-container, along with style, traits, components
   buildCodePanel() {
-    const buildSection = (type: string, codeViewer) => {
+    const buildCodeEditorSection = (type: string, codeViewer) => {
       const section = document.createElement('section');
       section.insertAdjacentHTML('beforeend', `
         <div class="codepanel-separator">
@@ -62,8 +56,8 @@ export class CodeEditor {
 
     this.htmlCodeEditor = this.buildCodeEditor('html');
     this.cssCodeEditor = this.buildCodeEditor('css');
-    const htmlCodeSection = buildSection('html', this.htmlCodeEditor);
-    const cssCodeSection = buildSection('css', this.cssCodeEditor);
+    const htmlCodeSection = buildCodeEditorSection('html', this.htmlCodeEditor);
+    const cssCodeSection = buildCodeEditorSection('css', this.cssCodeEditor);
 
     this.codePanel = document.createElement('div');
     this.codePanel.classList.add('code-panel');
