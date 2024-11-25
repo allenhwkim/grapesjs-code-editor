@@ -4,12 +4,12 @@ import split from 'split.js';
 export class CodeEditor {
   editor: Editor;
   opts = {
-    openState: { cv: '65%', pn: '35%' }, //State when open
+    openState: { cv: '55%', pn: '45%' }, //State when open
     closedState: { cv: '85%', pn: '15%' }, //State when closed
   };
   canvas: HTMLElement;
   panelViews: HTMLElement;
-  isActive = false;
+  isVisible = false;
 
   component: Component | undefined;
   codePanel: HTMLElement;
@@ -70,35 +70,26 @@ export class CodeEditor {
     this.codePanel.append(htmlCodeSection, cssCodeSection);
 
     const viewsContainer = this.editor.Panels.getPanel('views-container') as Panel;
-    viewsContainer
-      .set('appendContent', this.codePanel)
-      .trigger('change:appendContent');
+    viewsContainer.view.el.appendChild(this.codePanel);
+    viewsContainer.trigger('change:appendContent');
     this.updateEditorContents();
 
     split([htmlCodeSection, cssCodeSection], {
       direction: 'vertical',
       sizes: [50, 50],
       minSize: 100,
-      gutterSize: 1,
-      onDragEnd: this.refreshEditors.bind(this),
+      gutterSize: 1
     });
 
-    this.editor.on('component:update', model => this.updateEditorContents());
-    this.editor.on('stop:preview', () => {
-      // const viewsContainerPanel = this.editor.Panels.getPanel('views-container');
-      // if (viewsContainerPanel?.view.className === '')
-      // console.log('>>>>>>..', this.editor.Panels.getPanel('views-container'));
-      if (this.isActive) {
-        this.canvas.style.width = this.opts.openState.cv;
-      }
-    });
+    this.editor.on('component:update', 
+      () => this.updateEditorContents());
+    this.editor.on('stop:preview', 
+      () => this.isVisible && (this.canvas.style.width = this.opts.openState.cv) );
   }
 
   showCodePanel() {
     this.updateEditorContents();
-    this.isActive = true;
-    // make sure editor is aware of width change after the 300ms effect ends
-    setTimeout(this.refreshEditors.bind(this), 320);
+    this.isVisible = true;
 
     this.panelViews.style.width = this.opts.openState.pn;
     this.canvas.style.width = this.opts.openState.cv;
@@ -106,15 +97,10 @@ export class CodeEditor {
 
   hideCodePanel() {
     this.codePanel.remove();
-    this.isActive = false;
+    this.isVisible = false;
 
     this.panelViews.style.width = this.opts.closedState.pn;
     this.canvas.style.width = this.opts.closedState.cv;
-  }
-
-  refreshEditors() {
-    this.htmlCodeEditor.refresh();
-    this.cssCodeEditor.refresh();
   }
 
   updateHtml(event) {

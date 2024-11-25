@@ -1,8 +1,17 @@
+.gjs-pn-views-container { /* modifiy position instead of having padding top */
+  padding: 0; /* padding: 42px(top 40px + border 2px) 0 0 */
+  top: 40px;  /* top: initial */
+  border-top: 2px solid var(--gjs-main-dark-color); /* border-top: initial */
+}
+
+.gjs-pn-views-container, .gjs-cv-canvas {
+  transition: width 0.3s ease-in-out;
+}
+
 .code-panel {
   text-align: left;
   font-size: 1rem;
   height: 100%;
-  overflow: hidden;
 }
 
 .code-panel section {
@@ -26,13 +35,13 @@
   text-transform: uppercase;
 }
 
-.gutter {
+.code-panel .gutter {
   cursor: ns-resize;
   position: relative;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.gutter:after {
+.code-panel .gutter:after {
   content: '';
   display: block;
   height: 8px;
@@ -44,22 +53,4 @@
 
 .code-panel .CodeMirror {
   height: 100%;
-}
-
-.gjs-pn-views {
-  border-left: 1px solid rgba(0, 0, 0, 0.2);
-  border-bottom: 0;
-}
-
-.gjs-pn-views-container {
-  box-shadow: initial;
-  border-top: 2px solid rgba(0, 0, 0, 0.2);
-  top: 40px;
-  padding-top: 0;
-  height: calc(100% - 40px);
-}
-
-.gjs-pn-views-container,
-.gjs-cv-canvas {
-  transition: width 0.3s ease-in-out;
 }
