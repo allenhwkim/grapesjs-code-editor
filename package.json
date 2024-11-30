@@ -1,18 +1,42 @@
 {
-  "name": "grapesjs-plugin-table",
+  "name": "grapesjs-code-editor",
   "version": "0.1.0",
+  "description": "GrapesJS code editor for a selected component",
   "type": "module",
+  "main": "dist/grapesjs-code-editor.umd.js",
+  "files": [ "dist/*" ],
   "scripts": {
     "start": "vite --open",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allenhwkim/grapesjs-code-editor.git"
+  },
+  "keywords": [
+    "grapesjs",
+    "plugin",
+    "editor",
+    "html",
+    "css",
+    "wysiwyg"
+  ],
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          "@babel/preset-env",
+          "@babel/preset-typescript"
+        ]
+      }
+    }
+  },
+  "author": "Artur Arseniev",
+  "license": "BSD-3-Clause",
   "devDependencies": {
-    "vite": "^5.4.10"
-  },
-  "dependencies": {
     "grapesjs": "^0.22.3",
-    "grapesjs-parser-postcss": "^1.0.3",
-    "split.js": "^1.6.5"
+    "split.js": "^1.6.5",
+    "vite": "^5.4.10",
+    "grapesjs-parser-postcss": "^1.0.3"
   }
 }
