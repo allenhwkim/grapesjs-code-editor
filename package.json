@@ -1,9 +1,9 @@
 {
   "name": "grapesjs-code-editor",
   "version": "0.1.0",
-  "description": "GrapesJS code editor for a selected component",
+  "description": "Enable users to edit html/css for the currently selected component",
   "type": "module",
-  "main": "dist/grapesjs-code-editor.umd.js",
+  "main": "dist/grapesjs-code-editor.umd.cjs",
   "files": [ "dist/*" ],
   "scripts": {
     "start": "vite --open",
