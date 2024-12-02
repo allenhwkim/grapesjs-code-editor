@@ -2,7 +2,7 @@ import { Editor } from 'grapesjs';
 import { CodeEditor } from './code-editor';
 import './styles.css';
 
-function grapesjsCodeEditor(editor: Editor, options = {}) {
+export default function grapesjsCodeEditor(editor: Editor, options = {}) {
   let codeEditor: CodeEditor;
 
   editor.Commands.add('open-code', {
@@ -18,6 +18,3 @@ function grapesjsCodeEditor(editor: Editor, options = {}) {
     },
   });
 }
-
-(typeof window !== 'undefined')  && (window['grapesjs-code-editor'] = grapesjsCodeEditor);
-export default grapesjsCodeEditor;
